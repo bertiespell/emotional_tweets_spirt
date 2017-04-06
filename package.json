@@ -1,0 +1,29 @@
+{
+  "name": "emotional_tweets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bertiespell/emotional_tweets_spirt.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bertiespell/emotional_tweets_spirt/issues"
+  },
+  "homepage": "https://github.com/bertiespell/emotional_tweets_spirt#readme",
+  "devDependencies": {
+    "bluebird": "^3.5.0",
+    "express": "^4.15.2",
+    "qs": "^6.4.0",
+    "request": "^2.81.0",
+    "twit": "^2.2.5",
+    "underscore": "^1.8.3",
+    "watson-developer-cloud": "^2.28.0"
+  }
+}
