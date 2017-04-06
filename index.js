@@ -10,8 +10,6 @@ var personality_insights = new PersonalityInsightsV3({
   version_date: '2016-10-19'
 });
 
-
-
 // const oauth = require('./twitter_config');
 
 var T = new Twit({
@@ -35,12 +33,9 @@ function getTweets(done) {
       let newTweets = '';
       filteredTweet.forEach(function (el) {
         newTweets += el + ' ';
-
       });
       tweetText += newTweets + ' ';
-
     });
-
     done(null, tweetText);
   });
 }
@@ -49,15 +44,14 @@ function getTweets(done) {
 // https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=${userName}&count=100&include_rts=false
 
 function personalityInsights(tweetText, done) {
-personality_insights.profile({
-  text: tweetText,
-  consumption_preferences: true
-},
-  function (err, response, body) {
-    if (err) console.log('error:', err);
-    else done(null, JSON.stringify(response, null, 2));
-});
-
+  personality_insights.profile({
+    text: tweetText,
+    consumption_preferences: true
+  },
+    function (err, response, body) {
+      if (err) console.log('error:', err);
+      else done(null, JSON.stringify(response, null, 2));
+    });
 }
 
 async.waterfall([getTweets, personalityInsights], function (error, result) {
