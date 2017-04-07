@@ -59,6 +59,7 @@ function getInsightsByUser(request, response) {
         if (error) {
             return console.log('OH NO');
         }
+        console.log(result);
         response.status(200).send({result})
     })
 }

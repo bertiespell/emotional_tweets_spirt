@@ -20,12 +20,12 @@ var T = new Twit({
 });
 
 function getTweets(done) {
-  T.get('search/tweets', { q: 'realDonaldTrump', count: 100 }, function (err, data, response) {
+  T.get('statuses/user_timeline', { q: 'realDonaldTrump', count: 100 }, function (err, data, response) {
     if (err) {
       return done(err);
     }
     let tweetText = '';
-    data.statuses.forEach(function (eachTweet) {
+    data.forEach(function (eachTweet) {
       const tweet = eachTweet.text.split(' ');
       const filteredTweet = tweet.filter(function (word) {
         return !/(@|#|https)/.test(word);
