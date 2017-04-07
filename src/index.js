@@ -1,8 +1,5 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const App = rewuire('./app');
 
-const HelloWorld = () => (
-    <div>HELLOWORLD!!!</div>
-);
-
-ReactDOM.render(<HelloWorld/>, document.getElementById('ROOT'));
+ReactDOM.render(<App/>, document.getElementById('ROOT'));
