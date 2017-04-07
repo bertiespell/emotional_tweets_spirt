@@ -4,7 +4,7 @@ const initialState = {
     data: {},
     buttonClicked: '',
     user: '',
-    fetching: false,
+    fetching: true,
     error: null
 };
 
@@ -36,6 +36,11 @@ function insightsReducer (prevState = initialState, action) {
             return prevState;
         }
     }
+}
+
+
+function normaliseData(data) {
+    console.log(data.result);
 }
 
 export default insightsReducer;

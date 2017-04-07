@@ -14901,23 +14901,40 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Output = _react2.default.createClass({
     displayName: 'Output',
     render: function render() {
-        return _react2.default.createElement(
-            'div',
-            { className: 'box' },
-            _react2.default.createElement(
+        if (this.props.insights.insights.fetching) {
+            return _react2.default.createElement(
                 'div',
-                { className: 'subtitle is-3' },
+                { className: 'box' },
                 _react2.default.createElement(
                     'div',
-                    { className: 'level-item has-text-centered' },
+                    { className: 'subtitle is-3' },
                     _react2.default.createElement(
-                        'h1',
-                        null,
-                        'Results'
+                        'div',
+                        { className: 'level-item has-text-centered' },
+                        _react2.default.createElement(
+                            'h1',
+                            null,
+                            'Personality'
+                        )
                     )
                 )
-            )
-        );
+            );
+        } else {
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'box' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'subtitle is-3' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'level-item has-text-centered' },
+                        this.props.insights.insights.data.data.result
+                    )
+                )
+            );
+        }
     }
 });
 
@@ -15051,7 +15068,7 @@ var initialState = {
     data: {},
     buttonClicked: '',
     user: '',
-    fetching: false,
+    fetching: true,
     error: null
 };
 
@@ -15089,6 +15106,10 @@ function insightsReducer() {
                 return prevState;
             }
     }
+}
+
+function normaliseData(data) {
+    console.log(data.result);
 }
 
 exports.default = insightsReducer;

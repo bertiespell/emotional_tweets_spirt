@@ -33,6 +33,7 @@ class EnterUser extends Component {
         event.preventDefault();
         this.props.getInsights(this.props.insights.form.user.values.insights);
         this.props.reset();
+
     }
 }
 
@@ -40,7 +41,7 @@ class EnterUser extends Component {
 function mapStateToProps (state) {
     return {
         insights: state
-    }
+    };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -48,7 +49,7 @@ function mapDispatchToProps(dispatch) {
         getInsights: (username) => {
             dispatch(getInsights(username));
         }
-    }
+    };
 }
 
 EnterUser = reduxForm({
