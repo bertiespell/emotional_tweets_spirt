@@ -21,12 +21,12 @@ var T = new Twit({
 
 function getInsightsByUser(request, response) {
     function getTweets(done) {
-        T.get('statuses/user_timeline', { q: request.params.user_name, count: 2000 }, function (err, data, response) {
+        T.get('search/tweets', { q: request.params.user_name, count: 100 }, function (err, data, response) {
             if (err) {
                 return done(err);
             }
             let tweetText = '';
-            data.forEach(function (eachTweet) {
+            data.statuses.forEach(function (eachTweet) {
                 const tweet = eachTweet.text.split(' ');
                 const filteredTweet = tweet.filter(function (word) {
                     return !/(@|#|https)/.test(word);
