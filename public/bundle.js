@@ -14832,20 +14832,17 @@ var EnterUser = function (_Component) {
                     _react2.default.createElement(
                         'div',
                         { className: 'field is-grouped' },
-                        _react2.default.createElement(
-                            'p',
-                            { className: 'control' },
-                            _react2.default.createElement(
-                                'button',
-                                { className: 'button is-info' },
-                                'Insights'
-                            ),
-                            _react2.default.createElement(
-                                'button',
-                                { className: 'button is-warning' },
-                                'Translate'
-                            )
-                        )
+                        _react2.default.createElement('p', { className: 'control' })
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { className: 'button is-info' },
+                        'Insights'
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { className: 'button is-warning' },
+                        'Translate'
                     )
                 )
             );

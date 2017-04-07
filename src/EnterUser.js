@@ -20,10 +20,10 @@ class EnterUser extends Component {
                    </div>
                    <div className="field is-grouped">
                        <p className="control">
-                           <button className="button is-info">Insights</button>
-                           <button className="button is-warning">Translate</button>
                        </p>
                    </div>
+                           <button className="button is-info">Insights</button>
+                           <button className="button is-warning">Translate</button>
                </form>
            </div>
 
