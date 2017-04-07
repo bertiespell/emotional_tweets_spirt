@@ -3,20 +3,22 @@ var qs = require('querystring');
 const request = require('request');
 var PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 const async = require('async');
+const twitterConfig = require('./twitter_config.js');
+const watsonConfig = require('./watson_config');
 
 var personality_insights = new PersonalityInsightsV3({
-  username: 'e90e128b-df6d-41fa-83e1-c82e10b73bd1',
-  password: 'kx7881VDdMil',
-  version_date: '2016-10-19'
+  username: watsonConfig.username,
+  password: watsonConfig.password,
+  version_date: watsonConfig.version_date
 });
 
 // const oauth = require('./twitter_config');
 
 var T = new Twit({
-  consumer_key: 'dqsUU1y32uaiobihrqyt7y7CX',
-  consumer_secret: 'RDwumSVu91MwWf8UoX63EMopYkLoEClkFM8VcKOjSjDdlVu4Jz',
-  access_token: '51545787-SFX5dF0MawW8lc0DTGTOYm6kUoo3HgbTFiGjn0wbv',
-  access_token_secret: 'ZYyXFhLQqjpDn3y3qC1GlRaKpMnbMo0D9yW2tzpK8HeEs',
+    consumer_key: twitterConfig.consumer_key,
+    consumer_secret: twitterConfig.consumer_secret,
+    access_token: twitterConfig.access_token,
+    access_token_secret: twitterConfig.access_token_secret
 });
 
 function getTweets(done) {
