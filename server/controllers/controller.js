@@ -7,9 +7,9 @@ const twitterConfig = require('../../twitter_config.js');
 const watsonConfig = require('../../watson_config');
 
 var personality_insights = new PersonalityInsightsV3({
-  username: watsonConfig.username,
-  password: watsonConfig.password,
-  version_date: watsonConfig.version_date
+    username: watsonConfig.username,
+    password: watsonConfig.password,
+    version_date: watsonConfig.version_date
 });
 
 var T = new Twit({
@@ -57,7 +57,7 @@ function getInsightsByUser(request, response) {
             return console.log('OH NO');
         }
         console.log(result);
-        response.status(200).send({result})
+        response.status(200).send({ result })
     })
 }
 

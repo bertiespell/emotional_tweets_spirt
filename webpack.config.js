@@ -1,8 +1,8 @@
 const path = require('path');
 
-module.exports = (env) => { // run differently depending on which environment you're in - production or 
+module.exports = (env) => {
     return {
-        context: path.join(__dirname, 'src'),// where to look for files from an absolute path
+        context: path.join(__dirname, 'src'),
         entry: './index.js',
         output: {
             filename: 'bundle.js',
