@@ -1,6 +1,10 @@
-const React = require('react');
-const EnterUser= require('./EnterUser');
-const Output= require('./Output');
+// const React = require('react');
+// const EnterUser= require('./EnterUser');
+// const Output= require('./Output');
+
+import React from 'react';
+import EnterUser from './EnterUser';
+import Output from './Output';
 
 const App = React.createClass({
     render: function () {
@@ -20,4 +24,4 @@ const App = React.createClass({
     }
 });
 
-module.exports = App;
+export default App;
