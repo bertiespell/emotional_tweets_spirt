@@ -3,16 +3,14 @@ var qs = require('querystring');
 const request = require('request');
 var PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 const async = require('async');
-const twitterConfig = require('../twitter_config.js');
-const watsonConfig = require('../watson_config');
+const twitterConfig = require('../../twitter_config.js');
+const watsonConfig = require('../../watson_config');
 
 var personality_insights = new PersonalityInsightsV3({
   username: watsonConfig.username,
   password: watsonConfig.password,
   version_date: watsonConfig.version_date
 });
-
-// const oauth = require('./twitter_config');
 
 var T = new Twit({
     consumer_key: twitterConfig.consumer_key,
@@ -23,12 +21,12 @@ var T = new Twit({
 
 function getInsightsByUser(request, response) {
     function getTweets(done) {
-        T.get('search/tweets', { q: request.params.user_name, count: 100 }, function (err, data, response) {
+        T.get('statuses/user_timeline', { q: request.params.user_name, count: 2000 }, function (err, data, response) {
             if (err) {
                 return done(err);
             }
             let tweetText = '';
-            data.statuses.forEach(function (eachTweet) {
+            data.forEach(function (eachTweet) {
                 const tweet = eachTweet.text.split(' ');
                 const filteredTweet = tweet.filter(function (word) {
                     return !/(@|#|https)/.test(word);
@@ -42,9 +40,6 @@ function getInsightsByUser(request, response) {
             done(null, tweetText);
         });
     }
-
-    // console.log(tweetText); nwat24 [4:19 PM] 
-    // https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=${userName}&count=100&include_rts=false
 
     function personalityInsights(tweetText, done) {
         personality_insights.profile({

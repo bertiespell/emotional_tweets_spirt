@@ -1,5 +1,5 @@
 var PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
-var watsonCredentials = require('./watson_config');
+var watsonCredentials = require('../watson_config');
 
 var personality_insights = new PersonalityInsightsV3({
   username: watsonCredentials.username,
