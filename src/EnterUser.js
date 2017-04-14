@@ -1,31 +1,31 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {getInsights} from './actions/actions';
+import { getInsights } from './actions/actions';
 import { Field, reduxForm, propTypes } from 'redux-form';
 
 
 class EnterUser extends Component {
-    render () {
+    render() {
         return (
-            
-                <div className='box has-text-centered' id='commentform'>
-               <form onSubmit={this.handleSubmit.bind(this)}>
-                   <div className='box'>
-                       <div className="field">
-                           <label className="label">Enter Username</label>
-                           <div>
-                               <Field name="insights" component="input" type="text" />
-                           </div>
-                       </div>
-                   </div>
-                   <div className="field is-grouped">
-                       <p className="control">
-                       </p>
-                   </div>
-                           <button className="button is-info">Insights</button>
-                           <button className="button is-warning">Translate</button>
-               </form>
-           </div>
+
+            <div className='box has-text-centered' id='commentform'>
+                <form onSubmit={this.handleSubmit.bind(this)}>
+                    <div className='box'>
+                        <div className="field">
+                            <label className="label">Enter Username</label>
+                            <div>
+                                <Field name="insights" component="input" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="field is-grouped">
+                        <p className="control">
+                        </p>
+                    </div>
+                    <button className="button is-info">Insights</button>
+                    <button className="button is-warning">Translate</button>
+                </form>
+            </div>
 
         );
     }
@@ -38,7 +38,7 @@ class EnterUser extends Component {
 }
 
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
     return {
         insights: state
     };
@@ -58,4 +58,4 @@ EnterUser = reduxForm({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps) (EnterUser);
+export default connect(mapStateToProps, mapDispatchToProps)(EnterUser);

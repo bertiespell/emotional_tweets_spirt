@@ -21,12 +21,12 @@ var T = new Twit({
 
 function getInsightsByUser(request, response) {
     function getTweets(done) {
-        T.get('search/tweets', { q: request.params.user_name, count: 100 }, function (err, data, response) {
+        T.get('statuses/user_timeline', { screen_name: request.params.user_name, count: 100 }, function (err, data, response) {
             if (err) {
                 return done(err);
             }
             let tweetText = '';
-            data.statuses.forEach(function (eachTweet) {
+            data.forEach(function (eachTweet) {
                 const tweet = eachTweet.text.split(' ');
                 const filteredTweet = tweet.filter(function (word) {
                     return !/(@|#|https)/.test(word);
@@ -56,7 +56,7 @@ function getInsightsByUser(request, response) {
         if (error) {
             return console.log('OH NO');
         }
-        console.log(result);
+        // console.log(result);
         response.status(200).send({ result })
     })
 }
