@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PersonalityTrait from './personalities';
 
 
 const Output = React.createClass({
@@ -26,7 +27,7 @@ const Output = React.createClass({
                     <div className='subtitle is-3'>
 
                         <div className='level-item has-text-centered'>
-                            {this.props.insights.insights.data.data.result}
+                            <PersonalityTrait data={this.props.insights.insights.data}/>
                         </div>
                     </div>
 

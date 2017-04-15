@@ -57,7 +57,7 @@ function getInsightsByUser(request, response) {
             return console.log('OH NO');
         }
         // console.log(result);
-        response.status(200).send({ result })
+        response.status(200).send(result);
     })
 }
 

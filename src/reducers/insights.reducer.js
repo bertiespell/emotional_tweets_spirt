@@ -19,7 +19,7 @@ function insightsReducer (prevState = initialState, action) {
         case types.FETCH_INSIGHTS_SUCCESS: {
             const newState = Object.assign({}, prevState);
             let newData = Object.assign({}, newState.data);
-            newData = action.data;
+            newData = action.data.data.personality;
             newState.data = newData;
             newState.fetching = false;
             return newState;
