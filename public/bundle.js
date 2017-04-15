@@ -14903,37 +14903,35 @@ var Output = _react2.default.createClass({
     displayName: 'Output',
     render: function render() {
         if (this.props.insights.insights.fetching) {
-            return _react2.default.createElement(
-                'div',
-                { className: 'box' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'subtitle is-3' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'level-item has-text-centered' },
-                        _react2.default.createElement(
-                            'h1',
-                            null,
-                            'Personality'
-                        )
-                    )
-                )
-            );
+            return _react2.default.createElement('div', null);
         } else {
-
+            var colours = ['is-info', 'is-success', 'is-Warning', 'is-danger', 'is-primary', 'is-info', 'is-success', 'is-Warning', 'is-danger'];
             return _react2.default.createElement(
                 'div',
                 { className: 'box' },
                 _react2.default.createElement(
-                    'div',
-                    { className: 'subtitle is-3' },
-                    _react2.default.createElement(
+                    'h1',
+                    { className: 'level-item has-text-centered title is-1' },
+                    'Personality'
+                ),
+                this.props.insights.insights.data.map(function (mainTrait, i) {
+                    return _react2.default.createElement(
                         'div',
-                        { className: 'level-item has-text-centered' },
-                        _react2.default.createElement(_personalities2.default, { data: this.props.insights.insights.data })
-                    )
-                )
+                        { className: 'box' },
+                        _react2.default.createElement(_personalities2.default, { name: mainTrait.name, percent: mainTrait.percentile, key: i, color: colours[i], size: 'is-medium', titleSize: 'is-2' }),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'section' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'box' },
+                                mainTrait.children.map(function (trait, x) {
+                                    return _react2.default.createElement(_personalities2.default, { name: trait.name, percent: trait.percentile, key: x, color: colours[x + 1], size: 'is-small', titleSize: 'is-4' });
+                                })
+                            )
+                        )
+                    );
+                })
             );
         }
     }
@@ -15068,21 +15066,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Personalities = _react2.default.createClass({
     displayName: 'Personalities',
     render: function render() {
+        var formatTitle = 'title ' + this.props.titleSize;
+        var formatBar = 'progress ' + this.props.color + ' ' + this.props.size;
         return _react2.default.createElement(
             'div',
             null,
-            this.props.data.map(function (trait) {
-                return _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        'h3',
-                        null,
-                        trait.name
-                    ),
-                    _react2.default.createElement('progress', { className: 'is-info', value: trait.percentile, max: '1' })
-                );
-            })
+            _react2.default.createElement(
+                'h3',
+                { className: formatTitle },
+                this.props.name
+            ),
+            _react2.default.createElement('progress', { className: formatBar, value: this.props.percent, max: '1' })
         );
     }
 });

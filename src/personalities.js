@@ -2,18 +2,13 @@ import React from 'react';
 
 const Personalities = React.createClass({
     render() {
+            const formatTitle= `title ${this.props.titleSize}`;
+            const formatBar = `progress ${this.props.color} ${this.props.size}`;
         return (
-            <div>
-                {this.props.data.map(function (trait) {
-                    return (
-                        <div>
-                            <h3>{trait.name}</h3>
-                            <progress className="is-info" value={trait.percentile} max='1' />
-                        </div>
-                    )
-                })}
-
-            </div>
+                <div>
+                    <h3 className={formatTitle}>{this.props.name}</h3>
+                    <progress className={formatBar} value={this.props.percent} max='1' />
+                </div>
         );
     }
 });

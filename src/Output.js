@@ -5,33 +5,43 @@ import PersonalityTrait from './personalities';
 
 const Output = React.createClass({
 
+
     render() {
         if (this.props.insights.insights.fetching) {
             return (
-
-            <div className='box'>
-                <div className='subtitle is-3'>
-
-                    <div className='level-item has-text-centered'>
-                        <h1>Personality</h1>
-                    </div>
-                </div>
-
-            </div>
-            )
+                <div></div>
+            );
         }
         else {
-
+            const colours = ['is-info', 'is-success', 'is-Warning', 'is-danger', 'is-primary', 'is-info', 'is-success', 'is-Warning', 'is-danger'];
             return (
                 <div className='box'>
-                    <div className='subtitle is-3'>
+                    <h1 className='level-item has-text-centered title is-1'>Personality</h1>
 
-                        <div className='level-item has-text-centered'>
-                            <PersonalityTrait data={this.props.insights.insights.data}/>
-                        </div>
-                    </div>
+                        {this.props.insights.insights.data.map((mainTrait, i) => {
+                            return (
+                                <div className="box">
+                                    <PersonalityTrait name={mainTrait.name} percent={mainTrait.percentile} key={i} color={colours[i]} size="is-medium" titleSize="is-2" />
+                                    <div className="section">
+
+                                        <div className='box'>
+
+                                            {mainTrait.children.map((trait, x) => {
+                                                return (
+                                                    <PersonalityTrait name={trait.name} percent={trait.percentile} key={x} color={colours[x + 1]} size="is-small" titleSize="is-4" />
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            );
+                        })}
+
 
                 </div>
+
             );
         }
     }
@@ -43,7 +53,6 @@ function mapStateToProps(state) {
         insights: state
     };
 }
-
 
 
 export default connect(mapStateToProps)(Output);
